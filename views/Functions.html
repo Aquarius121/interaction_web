@@ -1,0 +1,92 @@
+<!-- BEGIN PAGE HEADER-->
+<!-- <h3 class="page-title">
+	Functions
+</h3> -->
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div>
+	<div class="row">
+		<div class="col-md-12 col-sm-12">
+			<!-- BEGIN PORTLET-->
+			<div class="portlet ">
+				<div class="portlet-body">
+					<div class="head">
+                        <span>Functions</span>
+                        <span> {{leftMin}} : {{leftSec}} </span>
+                        <p><span>Total Users</span><span>{{totalUser}}</span></p>
+                    </div>
+                    <div class="content">
+                        <div class="col-sm-6 stage-active">
+                            <div class="heading">Stage {{activeStage}}</div>
+                            <div class="func-item">
+                                <span class="func-name">Function 1</span>
+                                <p class="func-value"><Span>{{100 * (stage.func1 / totalUser)}}%</Span><span>{{stage.func1}} users</span></p>
+                            </div>
+                            <div class="func-item">
+                                <span class="func-name">Function 2</span>
+                                <p class="func-value"><Span>{{100 * (stage.func2 / totalUser)}}%</Span><span>{{stage.func2}} users</span></p>
+                            </div>
+                            <div class="func-item">
+                                <span class="func-name">Function 3</span>
+                                <p class="func-value"><Span>{{100 * (stage.func3 / totalUser)}}%</Span><span>{{stage.func3}} users</span></p>
+                            </div>
+                            <div class="func-item">
+                                <span class="func-name">Function 4</span>
+                                <p class="func-value"><Span>{{100 * (stage.func4 / totalUser)}}%</Span><span>{{stage.func4}} users</span></p>
+                            </div>
+                            <button ng-click="unlockStage(1)">Reset Stage 1</button>
+                        </div>
+                        <div class="col-sm-6 stage-inactive">
+                            <div class="heading">Stage {{activeStage + 1}} (preview)</div>
+                            <div class="func-item">
+                                <span class="func-name">Function 1</span>
+                            </div>
+                            <div class="func-item">
+                                <span class="func-name">Function 2</span>
+                            </div>
+                            <div class="func-item">
+                                <span class="func-name">Function 3</span>
+                            </div>
+                            <div class="func-item">
+                                <span class="func-name">Function 4</span>
+                            </div>
+                            <div>
+                                <button ng-click="unlockStage(2)">Unlock Stage 2</button>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+			<!-- END PORTLET-->
+		</div>
+	</div>
+</div>
+<div class="footer-menu">
+    <div class="footer-item">
+        <img src="" alt="logo">
+        <p>Game Logo</p>
+    </div>
+    <div class="footer-item">
+        <img src="" alt="func">
+        <p>Functions</p>
+    </div>
+    <div class="footer-item">
+        <img src="" alt="news">
+        <p>Newsfeed</p>
+    </div>
+    <div class="footer-item">
+        <img src="" alt="pp">
+        <p>Pay for Play</p>
+    </div>
+    <div class="footer-item">
+        <img src="" alt="settings">
+        <p>Settings</p>
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS & CSS -->
+<script>
+	Index.init();    
+	Tasks.initDashboardWidget();
+</script>
+<!-- BEGIN MAIN JS & CSS -->
