@@ -1,6 +1,6 @@
 'use strict';
 
-ApolloApp.controller('FunctionsController', ['$rootScope', '$scope', '$http', '$timeout','QueryService', '$firebaseObject', function($rootScope, $scope, $http, $timeout, QueryService, $firebaseObject) {
+ApolloApp.controller('SettingsController', ['$rootScope', '$scope', '$http', '$timeout','QueryService', '$firebaseObject', function($rootScope, $scope, $http, $timeout, QueryService, $firebaseObject) {
     var userRef = firebase.database().ref('/users');
     var userObj = $firebaseObject(userRef);
 
@@ -62,7 +62,6 @@ ApolloApp.controller('FunctionsController', ['$rootScope', '$scope', '$http', '$
         var now = Date.now();
         if(startTime > 0 && (now - startTime) < 121 * 1000){
             var timeLeft = 120 - parseInt(now / 1000 - startTime / 1000);
-            
             $scope.leftMin = parseInt(timeLeft / 60);
             $scope.leftSec = (timeLeft % 60) > 9 ? (timeLeft % 60) : '0' + (timeLeft % 60);
             $scope.$apply();
@@ -84,7 +83,7 @@ ApolloApp.controller('FunctionsController', ['$rootScope', '$scope', '$http', '$
                     }
                     stageObj['stage-'+$scope.activeStage]['status'] = 'finished-' + ind;
                     stageObj.$save();
-                }, 5 * 1000);
+                }, 15 * 1000);
             }
         }
     }

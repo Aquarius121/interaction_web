@@ -191,9 +191,9 @@ div.tb-row{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #333;
+  background: black;
   color: white;
-  padding: 10px;
+  padding: 0px 15px;
 }
 .portlet-body .head p{
   display: flex;
@@ -204,6 +204,12 @@ div.tb-row{
 .stage-active, .stage-inactive{
   padding: 0px;
 }
+.stage-active{
+  padding-right: 15px;
+}
+.stage-inactive{
+  padding: 50px 30px;
+}
 
 .stage-active .heading, .stage-inactive .heading{
   padding: 15px;
@@ -211,51 +217,62 @@ div.tb-row{
 }
 
 .stage-active .heading{
-  background-color: #ACAEB0;
+  background-color: transparent;
   color: #FFFFFF;
 }
 
 .stage-inactive .heading{
-  background-color: #6F7072;
-  color: #A4A5A5;
+  background-color: transparent;
+  color: #FFFFFF;
 }
 
 .stage-active .func-item {
-  background-color: #b3b4b7;
   display: flex;
   justify-content: space-between;
   padding: 15px;
-  border-bottom: 1px solid #89898b;
   width: 100%;
   align-items: center;
   height: 125px;
+  position: relative;
 }
 .stage-active .func-item .func-name {
   color: white;
   font-size: 25px;
+  z-index: 555;
+  margin: 0 auto;
 }
 .stage-active .func-item .func-value {
-  color: #fcf236;
+  color: #d0d0d0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
+  position: absolute;
+  right: 20px;
 }
 .stage-active .func-item .func-value span{
   font-size: 20px;
 }
 .stage-active .func-item .func-value span:first-child {
   font-size: 40px;
+  color: #6f8183;
 }
 
 .stage-inactive .func-item {
-  background-color: #67686a;
   color: #454146;
-  border-bottom: 1px solid #77787a;
-  height: 100px;
+  height: 80px;
   display: flex;
   align-items: center;
   font-size: 18px;
   justify-content: center;
+  position: relative;
+}
+.stage-inactive button.func-item{
+  border-radius: 10px;
+  background: url('/imgs/button.png');
+  width: 100%;
+  color: white;
+  background-size: 100% 100%;
+  border: 0px;
 }
 .stage-inactive div:last-child{
   height: 100px;
@@ -264,20 +281,29 @@ div.tb-row{
   justify-content: center;
 }
 
-.head span:first-child{
+.stage-inactive .func-item .func-name{
+  z-index: 555;
+  color: white;
+}
+
+.stage-inactive .func-item img, .stage-active .func-item img{
+  position: absolute;
+  width: 100%;
+  height: 107%;
+  left: 0;
+  top: 0;
+}
+
+.head span{
   font-size: 30px;
 }
 
 .head > span:nth-child(2){
   font-size: 40px;
-  background-color: #2caadf;
+  background-color: #6f8183;
   padding: 0px 15px;
-}
-.head > p > span{
-  font-size: 25px;
-}
-.head > p > span:nth-child(2) {
-  color: #2caadf;
+  color: black;
+  font-weight: bold;
 }
 .page-sidebar-wrapper{
   display: none !important;
@@ -289,15 +315,40 @@ div.tb-row{
   width: 100%;
   justify-content: space-around;
   align-items: center;
-  background: #454146;
+  background: black;
 }
 .footer-menu .footer-item{
-  display: flex;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
   flex: 1;
-  border-right: 1px solid #A4A5A5;
+}
+
+.footer-menu .footer-item p{
+  color: #6e8381;
+  margin-top: 5px;
+}
+
+.bg-container{
+  background: url('/imgs/background.png');
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+.bg-container > div:first-child{
+  flex: 1;
+}
+.page-header-fixed .page-container{
+  margin-top: 0px;
+}
+.img-content{
+  display: flex;
+  align-items: center;
+  height: calc(100vh - 175px);
+}
+.img-content img{
+  width: 100%;
 }

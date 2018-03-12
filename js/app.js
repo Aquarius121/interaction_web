@@ -138,6 +138,66 @@ ApolloApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                 }]
             }
         })
+        .state('News', {
+            url: "/news",
+            templateUrl: "views/News.html",            
+            data: {pageTitle: 'News'},
+            controller: "NewsController",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'ApolloApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+
+                            '/library/scripts/index3.js',
+                            '/library/scripts/tasks.js',
+                            'js/controllers/NewsController.js'
+                        ] 
+                    });
+                }]
+            }
+        })
+        .state('Pay', {
+            url: "/pp",
+            templateUrl: "views/Pay.html",            
+            data: {pageTitle: 'Pay for play'},
+            controller: "PayController",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'ApolloApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+
+                            '/library/scripts/index3.js',
+                            '/library/scripts/tasks.js',
+                            'js/controllers/PayController.js'
+                        ] 
+                    });
+                }]
+            }
+        })
+        .state('Settings', {
+            url: "/settings",
+            templateUrl: "views/Settings.html",            
+            data: {pageTitle: 'Settings'},
+            controller: "SettingsController",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'ApolloApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+
+                            '/library/scripts/index3.js',
+                            '/library/scripts/tasks.js',
+                            'js/controllers/SettingsController.js'
+                        ] 
+                    });
+                }]
+            }
+        })
 }]);
 
 /* Init global settings and run the app */
