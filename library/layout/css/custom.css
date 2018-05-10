@@ -60,6 +60,7 @@ Change Quick Sidebar Width
 */
 body{
   overflow: hidden;
+  overflow-y: auto;
 }
 .page-header.navbar .page-logo{
   padding-right: 10px;
@@ -335,8 +336,11 @@ div.tb-row{
   background: url('/imgs/background.png');
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   justify-content: space-between;
+}
+.bg-container .content{
+  min-height: calc(100vh - 200px);
 }
 .bg-container > div:first-child{
   flex: 1;
@@ -346,9 +350,29 @@ div.tb-row{
 }
 .img-content{
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   height: calc(100vh - 175px);
+  overflow: hidden;
+  padding-top: 20px !important;
+  /* overflow-y: auto; */
 }
 .img-content img{
   width: 100%;
+  height: auto;
+  /* margin: 0 auto; */
+}
+.portlet {
+  margin-bottom: 10px;
+}
+.footer-item img{
+  max-width: 35px;
+}
+.footer-item:first-child img{
+  max-width: 180px;
+}
+.footer-item:nth-child(2) img{
+  max-width: 31px;
+}
+.footer-menu .footer-item:nth-child(3) p{
+  margin-top: 8px;
 }

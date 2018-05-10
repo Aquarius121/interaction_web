@@ -56,10 +56,12 @@ ApolloApp.controller('FunctionsController', ['$rootScope', '$scope', '$http', '$
         activeObj.$save();
         stageObj.$save();
         timeObj.$save();
+        setInterval(intervalFunc, 1000);
     }
 
     var intervalFunc = function() {
         var now = Date.now();
+        // console.log('here', stageObj['stage-'+$scope.activeStage]['status']);
         if(startTime > 0 && (now - startTime) < 121 * 1000){
             var timeLeft = 120 - parseInt(now / 1000 - startTime / 1000);
             
@@ -86,6 +88,16 @@ ApolloApp.controller('FunctionsController', ['$rootScope', '$scope', '$http', '$
                     stageObj.$save();
                 }, 5 * 1000);
             }
+        }
+        if(startTime > 0 && (now - startTime) >= 125 * 1000 && (now - startTime) <= 246 * 1000){
+            var timeLeft = 245 - parseInt(now / 1000 - startTime / 1000);
+            
+            $scope.leftMin = parseInt(timeLeft / 60);
+            $scope.leftSec = (timeLeft % 60) > 9 ? (timeLeft % 60) : '0' + (timeLeft % 60);
+            $scope.$apply();
+        }
+        if (startTime > 0 && (now - startTime) > 250 * 1000 && stageObj['stage-'+$scope.activeStage] && stageObj['stage-'+$scope.activeStage]['status'].indexOf('finished') >= 0) {
+            clearInterval(timer)
         }
     }
 
