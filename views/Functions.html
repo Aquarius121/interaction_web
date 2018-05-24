@@ -19,23 +19,23 @@
                         <div class="col-sm-8 stage-active">
                             <div class="heading">STAGE {{activeStage}}</div>
                             <div class="func-item">
-                                <img src='/imgs/scream.png'>
-                                <span class="func-name">Screaming Noise</span>
+                                <img ng-src="/imgs/{{bigImages[activeStage-1][0]}}.png" alt="">
+                                <span class="func-name">{{texts[activeStage-1][0]}}</span>
                                 <p class="func-value"><Span>{{100 * (stage.func1 / totalUser)}}%</Span><span>{{stage.func1}} users</span></p>
                             </div>
                             <div class="func-item">
-                                <img src='/imgs/light.png'>
-                                <span class="func-name">Flickering Lights</span>
+                                <img ng-src="/imgs/{{bigImages[activeStage-1][1]}}.png" alt="">
+                                <span class="func-name">{{texts[activeStage-1][1]}}</span>
                                 <p class="func-value"><Span>{{100 * (stage.func2 / totalUser)}}%</Span><span>{{stage.func2}} users</span></p>
                             </div>
                             <div class="func-item">
-                                <img src='/imgs/door.png'>
-                                <span class="func-name">Banging Door</span>
+                                <img ng-src="/imgs/{{bigImages[activeStage-1][2]}}.png" alt="">
+                                <span class="func-name">{{texts[activeStage-1][2]}}</span>
                                 <p class="func-value"><Span>{{100 * (stage.func3 / totalUser)}}%</Span><span>{{stage.func3}} users</span></p>
                             </div>
                             <div class="func-item">
-                                <img src='/imgs/wall.png'>
-                                <span class="func-name">Scratching Walls</span>
+                                <img ng-src="/imgs/{{bigImages[activeStage-1][3]}}.png" alt="">
+                                <span class="func-name">{{texts[activeStage-1][3]}}</span>
                                 <p class="func-value"><Span>{{100 * (stage.func4 / totalUser)}}%</Span><span>{{stage.func4}} users</span></p>
                             </div>
                             <button ng-click="unlockStage(1)">Reset Stage 1</button>
@@ -43,22 +43,22 @@
                         <div class="col-sm-4 stage-inactive">
                             <div class="heading">STAGE {{activeStage + 1}} PREVIEW</div>
                             <div class="func-item">
-                                <img src='/imgs/thunder.png'>
-                                <span class="func-name">Function 1</span>
+                                <img ng-src="/imgs/{{smallImages[activeStage-1][0]}}.png" alt="">
+                                <span class="func-name">{{texts[activeStage][0]}}</span>
                             </div>
                             <div class="func-item">
-                                <img src='/imgs/blackout.png'>
-                                <span class="func-name">Function 2</span>
+                                <img ng-src="/imgs/{{smallImages[activeStage-1][1]}}.png" alt="">
+                                <span class="func-name">{{texts[activeStage][1]}}</span>
                             </div>
                             <div class="func-item">
-                                <img src='/imgs/closet.png'>
-                                <span class="func-name">Function 3</span>
+                                <img ng-src="/imgs/{{smallImages[activeStage-1][2]}}.png" alt="">
+                                <span class="func-name">{{texts[activeStage][2]}}</span>
                             </div>
                             <div class="func-item">
-                                <img src='/imgs/ghost.png'>
-                                <span class="func-name">Function 4</span>
+                                <img ng-src="/imgs/{{smallImages[activeStage-1][3]}}.png" alt="">
+                                <span class="func-name">{{texts[activeStage][3]}}</span>
                             </div>
-                            <button class="func-item" ng-click="unlockStage(2)">UNLOCK STAGE 2</button>
+                            <button class="func-item" ng-click="unlockStage(2)">UNLOCK STAGE {{activeStage + 1}}</button>
                         </div>
                     </div>
 				</div>

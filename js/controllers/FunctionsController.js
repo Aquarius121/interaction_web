@@ -15,8 +15,17 @@ ApolloApp.controller('FunctionsController', ['$rootScope', '$scope', '$http', '$
 
     var startTime = 0;
 
+    var texts = [['Screaming Noise', 'Flickering Lights', 'Banging Door', 'Scratching Walls'], ['Thunder and Lightning', 'Blackout', 'Closet Monster', 'Ghost Scare'], ['Writing on the Wall', 'Trap Door Opening', 'Mysterious Voices', 'Spiders']];
+    var bigImages = [['scream-big', 'light-big', 'door-big', 'wall-big'], ['thunder-big', 'blackout-big', 'closet-big', 'ghost-big']];
+    var smallImages = [['thunder', 'blackout', 'closet', 'ghost'], ['writing', 'trap', 'mysterious', 'spiders']];
+
+
     $scope.leftMin = 2;
     $scope.leftSec = '00';
+
+    $scope.texts = texts;
+    $scope.bigImages = bigImages;
+    $scope.smallImages = smallImages;
     
     userObj.$watch(function() {
         $scope.totalUser = userObj.total;
