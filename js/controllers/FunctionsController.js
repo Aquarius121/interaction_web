@@ -48,9 +48,87 @@ ApolloApp.controller('FunctionsController', ['$rootScope', '$scope', '$http', '$
     })
 
     $scope.unlockStage = function (ind) {
-        activeObj.$value = ind;
+        if(ind < 3) {
+            activeObj.$value = ind;
+            
+            stageObj['stage-'+ind] = {
+                func1: 0,
+                func2: 0,
+                func3: 0,
+                func4: 0,
+                func1user:"",
+                func2user:"",
+                func3user:"",
+                func4user:"",
+                status: 'start'
+            }
+            timeObj.$value = Date.now();
+            activeObj.$save();
+            stageObj.$save();
+            timeObj.$save();
+            timer = setInterval(intervalFunc, 1000);
+        }
+    }
+    
+    
+
+    var intervalFunc = function() {
+        var now = Date.now();
         
-        stageObj['stage-'+ind] = {
+        if ( stageObj['stage-'+$scope.activeStage]) {
+            console.log('here', stageObj['stage-'+$scope.activeStage]['status']);
+            if(stageObj['stage-'+$scope.activeStage]['status'] != 'start') {
+                $scope.leftMin = 2;
+                $scope.leftSec = '00';
+                clearInterval(timer);
+            } else {
+                if(startTime > 0 && (now - startTime) < 121 * 1000){
+                    var timeLeft = 120 - parseInt(now / 1000 - startTime / 1000);
+                    
+                    $scope.leftMin = parseInt(timeLeft / 60);
+                    $scope.leftSec = (timeLeft % 60) > 9 ? (timeLeft % 60) : '0' + (timeLeft % 60);
+                    $scope.$apply();
+                    if(timeLeft == 0) {
+                        setTimeout(function() {
+                            var max = $scope.stage.func1;
+                            var ind = 1;
+                            if (max < $scope.stage.func2) {
+                                max = $scope.stage.func2
+                                ind = 2;
+                            }
+                            if (max < $scope.stage.func3) {
+                                max = $scope.stage.func3
+                                ind = 3;
+                            }
+                            if (max < $scope.stage.func4) {
+                                max = $scope.stage.func4
+                                ind = 4;
+                            }
+                            stageObj['stage-'+$scope.activeStage]['status'] = 'finished-' + ind;
+                            stageObj.$save();
+                        }, 5 * 1000);
+                    }
+                }
+                if(startTime > 0 && (now - startTime) >= 125 * 1000 && (now - startTime) <= 246 * 1000){
+                    var timeLeft = 245 - parseInt(now / 1000 - startTime / 1000);
+                    
+                    $scope.leftMin = parseInt(timeLeft / 60);
+                    $scope.leftSec = (timeLeft % 60) > 9 ? (timeLeft % 60) : '0' + (timeLeft % 60);
+                    $scope.$apply();
+                }
+                if (startTime > 0 && (now - startTime) > 250 * 1000 && stageObj['stage-'+$scope.activeStage] && stageObj['stage-'+$scope.activeStage]['status'].indexOf('finished') >= 0) {
+                    clearInterval(timer)
+                }
+            }
+        }
+    }
+
+    var timer = setInterval(intervalFunc, 1000);
+
+    $scope.resetStage = function() {
+        activeObj.$value = 1;
+        
+        stageObj['stage-1'] = {
             func1: 0,
             func2: 0,
             func3: 0,
@@ -59,56 +137,14 @@ ApolloApp.controller('FunctionsController', ['$rootScope', '$scope', '$http', '$
             func2user:"",
             func3user:"",
             func4user:"",
-            status: 'start'
+            status: 'ready'
         }
-        timeObj.$value = Date.now();
+        timeObj.$value = 1;
         activeObj.$save();
         stageObj.$save();
         timeObj.$save();
-        setInterval(intervalFunc, 1000);
+        $scope.leftMin = 2;
+        $scope.leftSec = '00';
+        clearInterval(timer);
     }
-
-    var intervalFunc = function() {
-        var now = Date.now();
-        // console.log('here', stageObj['stage-'+$scope.activeStage]['status']);
-        if(startTime > 0 && (now - startTime) < 121 * 1000){
-            var timeLeft = 120 - parseInt(now / 1000 - startTime / 1000);
-            
-            $scope.leftMin = parseInt(timeLeft / 60);
-            $scope.leftSec = (timeLeft % 60) > 9 ? (timeLeft % 60) : '0' + (timeLeft % 60);
-            $scope.$apply();
-            if(timeLeft == 0) {
-                setTimeout(function() {
-                    var max = $scope.stage.func1;
-                    var ind = 1;
-                    if (max < $scope.stage.func2) {
-                        max = $scope.stage.func2
-                        ind = 2;
-                    }
-                    if (max < $scope.stage.func3) {
-                        max = $scope.stage.func3
-                        ind = 3;
-                    }
-                    if (max < $scope.stage.func4) {
-                        max = $scope.stage.func4
-                        ind = 4;
-                    }
-                    stageObj['stage-'+$scope.activeStage]['status'] = 'finished-' + ind;
-                    stageObj.$save();
-                }, 5 * 1000);
-            }
-        }
-        if(startTime > 0 && (now - startTime) >= 125 * 1000 && (now - startTime) <= 246 * 1000){
-            var timeLeft = 245 - parseInt(now / 1000 - startTime / 1000);
-            
-            $scope.leftMin = parseInt(timeLeft / 60);
-            $scope.leftSec = (timeLeft % 60) > 9 ? (timeLeft % 60) : '0' + (timeLeft % 60);
-            $scope.$apply();
-        }
-        if (startTime > 0 && (now - startTime) > 250 * 1000 && stageObj['stage-'+$scope.activeStage] && stageObj['stage-'+$scope.activeStage]['status'].indexOf('finished') >= 0) {
-            clearInterval(timer)
-        }
-    }
-
-    var timer = setInterval(intervalFunc, 1000);
 }]);

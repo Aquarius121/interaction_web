@@ -38,7 +38,8 @@
                                 <span class="func-name">{{texts[activeStage-1][3]}}</span>
                                 <p class="func-value"><Span>{{100 * (stage.func4 / totalUser)}}%</Span><span>{{stage.func4}} users</span></p>
                             </div>
-                            <button ng-click="unlockStage(1)">Reset Stage 1</button>
+                            
+                            <button class="func-item" ng-click="unlockStage(1)" ng-if="activeStage == 1">Unlock Stage 1</button>
                         </div>
                         <div class="col-sm-4 stage-inactive">
                             <div class="heading">STAGE {{activeStage + 1}} PREVIEW</div>
@@ -60,9 +61,11 @@
                             </div>
                             <button class="func-item" ng-click="unlockStage(2)">UNLOCK STAGE {{activeStage + 1}}</button>
                         </div>
+                        <button class="func-item" ng-click="resetStage()">Reset</button>
                     </div>
 				</div>
-			</div>
+            </div>
+            
 			<!-- END PORTLET-->
         </div>
         <div class="footer-menu">

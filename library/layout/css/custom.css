@@ -275,6 +275,34 @@ div.tb-row{
   background-size: 100% 100%;
   border: 0px;
 }
+.stage-active button.func-item{
+  border-radius: 10px;
+  background: url('/imgs/button.png');
+  width: 100%;
+  color: white;
+  background-size: 100% 100%;
+  border: 0px;
+  max-width: 500px;
+  max-height: 75px;
+  justify-content: center;
+  margin: 15px auto;
+  font-size: 20px;
+}
+button.func-item{
+  border-radius: 10px;
+  background: url('/imgs/button.png');
+  width: 100%;
+  color: white;
+  background-size: 100% 100%;
+  border: 0px;
+  max-width: 500px;
+  height: 75px;
+  justify-content: center;
+  margin: 15px auto;
+  font-size: 20px;
+  clear: both;
+  display: block;
+}
 .stage-inactive div:last-child{
   height: 100px;
   display: flex;
