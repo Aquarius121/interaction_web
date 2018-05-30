@@ -12,7 +12,7 @@
 				<div class="portlet-body">
 					<div class="head">
                         <span>Functions</span>
-                        <span> {{leftMin}} : {{leftSec}} </span>
+                        <span style="background-color: {{backColor}}"> {{leftMin}} : {{leftSec}} </span>
                         <span>Total Users: {{totalUser | number:0}}</span>
                     </div>
                     <div class="content">
@@ -60,8 +60,9 @@
                                 <span class="func-name">{{texts[activeStage][3]}}</span>
                             </div>
                             <button class="func-item" ng-click="unlockStage(2)">UNLOCK STAGE {{activeStage + 1}}</button>
+                            <button class="func-item" ng-click="resetStage()">Reset</button>
                         </div>
-                        <button class="func-item" ng-click="resetStage()">Reset</button>
+                        
                     </div>
 				</div>
             </div>

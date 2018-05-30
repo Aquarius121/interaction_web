@@ -26,6 +26,7 @@ ApolloApp.controller('FunctionsController', ['$rootScope', '$scope', '$http', '$
     $scope.texts = texts;
     $scope.bigImages = bigImages;
     $scope.smallImages = smallImages;
+    $scope.backColor = "#6f8183";
     
     userObj.$watch(function() {
         $scope.totalUser = userObj.total;
@@ -38,9 +39,6 @@ ApolloApp.controller('FunctionsController', ['$rootScope', '$scope', '$http', '$
     stageObj.$watch(function() {
         var stageInd = 'stage-' + $scope.activeStage;
         $scope.stage = stageObj[stageInd];
-        console.log($scope.stage);
-        console.log(stageObj);
-        
     });
 
     timeObj.$watch(function() {
@@ -69,21 +67,20 @@ ApolloApp.controller('FunctionsController', ['$rootScope', '$scope', '$http', '$
             timer = setInterval(intervalFunc, 1000);
         }
     }
-    
-    
 
     var intervalFunc = function() {
         var now = Date.now();
         
         if ( stageObj['stage-'+$scope.activeStage]) {
-            console.log('here', stageObj['stage-'+$scope.activeStage]['status']);
-            if(stageObj['stage-'+$scope.activeStage]['status'] != 'start') {
+            
+            if(stageObj['stage-'+$scope.activeStage]['status'] != 'start' && stageObj['stage-'+$scope.activeStage]['status'].indexOf('finished') == -1) {
                 $scope.leftMin = 2;
                 $scope.leftSec = '00';
-                clearInterval(timer);
+                $scope.backColor = "#6f8183";
             } else {
                 if(startTime > 0 && (now - startTime) < 121 * 1000){
                     var timeLeft = 120 - parseInt(now / 1000 - startTime / 1000);
+                    $scope.backColor = "#ff0000";
                     
                     $scope.leftMin = parseInt(timeLeft / 60);
                     $scope.leftSec = (timeLeft % 60) > 9 ? (timeLeft % 60) : '0' + (timeLeft % 60);
@@ -111,12 +108,13 @@ ApolloApp.controller('FunctionsController', ['$rootScope', '$scope', '$http', '$
                 }
                 if(startTime > 0 && (now - startTime) >= 125 * 1000 && (now - startTime) <= 246 * 1000){
                     var timeLeft = 245 - parseInt(now / 1000 - startTime / 1000);
-                    
+                    $scope.backColor = "#ffff00";
                     $scope.leftMin = parseInt(timeLeft / 60);
                     $scope.leftSec = (timeLeft % 60) > 9 ? (timeLeft % 60) : '0' + (timeLeft % 60);
                     $scope.$apply();
                 }
                 if (startTime > 0 && (now - startTime) > 250 * 1000 && stageObj['stage-'+$scope.activeStage] && stageObj['stage-'+$scope.activeStage]['status'].indexOf('finished') >= 0) {
+                    $scope.backColor = "#6f8183";
                     clearInterval(timer)
                 }
             }
